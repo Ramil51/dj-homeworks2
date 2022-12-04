@@ -5,17 +5,9 @@
     <title>Рецепты</title>
 </head>
 <body>
-{% for recipe  in recipe.items %}
-    {% if recipe == key %}
         {% for ingredient, amount in recipe.items %}
-            <p>{{ ingredient }}: {{ amount }}</p>
-{% empty %}
-        <p>Такого рецепта не знаю :(</p>
-
+            <ul>{{ ingredient }}: {{ amount }}</ul>
         {% endfor %}
-    {% endif %}
-{% endfor %}
-    <p>Такого рецепта не знаю :</p>
 </body>
 </html>
 

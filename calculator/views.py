@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 
 
-recipes = {
+recipe = {
 
             'omlet': {
                 'яйца, шт': 2,
@@ -20,38 +20,20 @@ recipes = {
                 'сыр, ломтик': 1,
                 'помидор, ломтик': 1,
             },
-
-         },
-
+         }
 
 
 def my_recipes(request):
-    for key,value in recipes.items():
-        if key == 'recipe':
-            print(key,value)
 
+        context = {
+            'recipe': {
+                'яйца, шт': 2,
+                'молоко, л': 0.1,
+                'соль, ч.л.': 0.5,
+               },
+            }
 
-    context={
-        'recipe': {
-            {
-            'яйца, шт': 2,
-            'молоко, л': 0.1,
-            'соль, ч.л.': 0.5,
-        },
-                {
-                'хлеб, ломтик': 1,
-                'колбаса, ломтик': 1,
-                'сыр, ломтик': 1,
-                'помидор, ломтик': 1,
-            },
-               {
-                'макароны, г': 0.3,
-                'сыр, г': 0.05,
-            },
-        }
-    }
-
-    return render(request, 'calculator/index.html', context)
+        return render(request, 'calculator/index.html', context)
 
 def data_view(request):
     key = request.GET['key']
